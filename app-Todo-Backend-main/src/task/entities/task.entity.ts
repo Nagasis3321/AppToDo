@@ -21,7 +21,9 @@ export class Task {
   idUser: string;
   @Prop({ required: true, default: new Date() })
   createDay?: Date;
+  @Prop()
   finishDay?: Date;
+  @Prop()
   updateDay?: Date;
 }
 export type TaskDocument = Task & Document;

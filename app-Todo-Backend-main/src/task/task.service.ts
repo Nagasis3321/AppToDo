@@ -10,6 +10,8 @@ import { Task } from "./entities/task.entity";
 import { Model } from "mongoose";
 import { InjectModel } from "@nestjs/mongoose";
 import { DeleteTaskResponse, updateTaskResponse } from "./interfaces";
+import { TaskResponse } from "./interfaces/task-response";
+import { CreateTaskCompletedDto } from "./dto/create-task-completed.dto";
 
 @Injectable()
 export class TaskService {
@@ -17,7 +19,8 @@ export class TaskService {
     @InjectModel(Task.name)
     private taskModel: Model<Task>
   ) {}
-  async create(createTaskDto: CreateTaskDto) {
+
+  async create(createTaskDto: CreateTaskDto | CreateTaskCompletedDto) {
     try {
       const newTask = new this.taskModel(createTaskDto);
       return await newTask.save();
@@ -30,7 +33,7 @@ export class TaskService {
     }
   }
 
-  findAll() {
+  findAll(): Promise<TaskResponse[]> {
     return this.taskModel.find();
   }
 

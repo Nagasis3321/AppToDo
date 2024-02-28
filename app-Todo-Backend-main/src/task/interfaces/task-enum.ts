@@ -8,6 +8,7 @@ export enum PriorityTask {
   LOW = "LOW",
   MEDIUM = "MEDIUM",
   HIGH = "HIGH",
+  IMPORTART = "IMPORTART",
 }
 
 export enum TypeTask {

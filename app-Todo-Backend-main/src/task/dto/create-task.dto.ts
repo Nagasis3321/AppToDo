@@ -2,11 +2,11 @@ import { IsDate, IsString } from "class-validator";
 
 export class CreateTaskDto {
   @IsString()
-  title: string;
+  title!: string;
   @IsString()
-  description: string;
+  description!: string;
   @IsString()
-  idUser: string;
+  idUser!: string;
 
   //   @IsDate()
   //   finishDay?: Date; // Ahora es opcional
